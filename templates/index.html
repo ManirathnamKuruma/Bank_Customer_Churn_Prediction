@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+  font-family: Calibri, Helvetica, sans-serif;
+  background-color: pink;
+}
+.container {
+    padding: 50px;
+  background-color: lightblue;
+}
+
+input[type=text], textarea {
+  width: 50%;
+  padding: 9px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=text]:focus {
+  background-color: #FFF59D;
+  outline: none;
+}
+ div {
+            padding: 10px 0;
+         }
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+.predictbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 25%;
+  opacity: 0.9;
+}
+.registerbtn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+<form action="{{ url_for('predict')}}" method="post">
+  <div class="container">
+  <center>  <h1>Bank Customer Churn Prediction</h1> </center>
+  <hr>
+  <label> <b>Credit Score: </b></label>
+  <input type="text" name="cs" placeholder= "Enter the credit score" size="15" required />
+  <br>
+<label> <b>Gender: </b></label>
+<input type="radio" value="male" name="gender" checked> Male
+<input type="radio" value="female" name="gender"> Female
+<br><br>
+<label> <b>Age: </b></label>
+<input type="text" name="age" placeholder= "Enter the customer age" size="15" required />
+<br>
+<label> <b>Tenure: </b></label>
+<input type="text" name="tenure" placeholder= "Enter the tenure period interms of years" size="15" required />
+<br>
+<label> <b>Balance: </b></label>
+<input type="text" name="bal" placeholder= "Enter the customer balance" size="15" required />
+<br>
+<label> <b>Number of Products: </b></label>
+<input type="radio" value="1" name="nprod" checked> 1
+<input type="radio" value="2" name="nprod"> 2
+<input type="radio" value="3" name="nprod"> 3
+<input type="radio" value="4" name="nprod"> 4
+<br><br>
+<label> <b>Has Credit Card: </b></label>
+<input type="radio" value="no" name="cc" checked> No
+<input type="radio" value="yes" name="cc"> Yes
+<br><br>
+<label> <b>Is Active Member?: </b></label>
+<input type="radio" value="no" name="isactive" checked> No
+<input type="radio" value="yes" name="isactive"> Yes
+<br><br>
+<label> <b>Estimated Salary: </b></label>
+<input type="text" name="es" placeholder= "Enter the customer's estimated salary" size="15" required />
+<br>
+<label>
+<b>Geography:</b>
+</label>
+<select name="geo">
+<option value="menu">Select</option>
+<option value="fr">France</option>
+<option value="ger">Germany</option>
+<option value="sp">Spain</option>
+</select>
+<br><br>
+    <button id="sub" type="submit" class="predictbtn">Predict</button>
+    <br><br><h3>{{ prediction_text }}</h3>
+</div>
+</form>
+
+</body>
+</html>
